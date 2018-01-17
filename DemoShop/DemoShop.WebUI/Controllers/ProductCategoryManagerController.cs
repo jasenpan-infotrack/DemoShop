@@ -1,4 +1,5 @@
-﻿using DemoShop.Core.Models;
+﻿using DemoShop.Core.Contracts;
+using DemoShop.Core.Models;
 using DemoShop.DataAccess.InMemory;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace DemoShop.WebUI.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
-        InMemoryRepository<ProductCategory> context = new InMemoryRepository<ProductCategory>();
+        IRepository<ProductCategory> context = new InMemoryRepository<ProductCategory>();
 
-        public ProductCategoryManagerController()
+        public ProductCategoryManagerController(IRepository<ProductCategory> productCategoryContext)
         {
-            context = new InMemoryRepository<ProductCategory>();
+            context = productCategoryContext;
         }
         // GET: ProductManager
         public ActionResult Index()
