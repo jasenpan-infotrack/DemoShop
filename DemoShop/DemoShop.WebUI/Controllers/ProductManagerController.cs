@@ -6,19 +6,21 @@ using System.Web.Mvc;
 using DemoShop.Core.Models;
 using DemoShop.DataAccess.InMemory;
 using DemoShop.Core.ViewModels;
+using DemoShop.Core.Contracts;
 
 namespace DemoShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        InMemoryRepository<Product> context;
-        InMemoryRepository<ProductCategory> productCategories;
-        public ProductManagerController()
+        IRepository<Product> context;
+        IRepository<ProductCategory> productCategories;
+
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext)
         {
-            context = new InMemoryRepository<Product>();
-            productCategories = new InMemoryRepository<ProductCategory>();
+            context = productContext;
+            productCategories = productCategoryContext;
         }
-        // GET: ProductManager
+    
         public ActionResult Index()
         {
             List<Product> products = context.Collection().ToList();
