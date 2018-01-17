@@ -193,6 +193,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductCategoryManagerController.cs" />
+    <Compile Include="Controllers\ProductManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,6 +263,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ProductManager\Index.cshtml" />
+    <Content Include="Views\ProductManager\Edit.cshtml" />
+    <Content Include="Views\ProductManager\Delete.cshtml" />
+    <Content Include="Views\ProductCategoryManager\Index.cshtml" />
+    <Content Include="Views\ProductCategoryManager\Edit.cshtml" />
+    <Content Include="Views\ProductCategoryManager\Delete.cshtml" />
+    <Content Include="Views\ProductManager\Create.cshtml" />
+    <Content Include="Views\ProductCategoryManager\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -277,6 +287,24 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DemoShop.Core\DemoShop.Core.csproj">
+      <Project>{aa0e41ae-7766-40b8-8287-fdf9dfd257d8}</Project>
+      <Name>DemoShop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoShop.DataAccess.InMemory\DemoShop.DataAccess.InMemory.csproj">
+      <Project>{1594c808-7450-45ea-992b-7318cdabd467}</Project>
+      <Name>DemoShop.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoShop.DataAccess.SQL\DemoShop.DataAccess.SQL.csproj">
+      <Project>{7263fb6d-b5ee-48b9-88de-9cdf92168398}</Project>
+      <Name>DemoShop.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DemoShop.Services\DemoShop.Services.csproj">
+      <Project>{3ca3ceab-f3da-4049-8987-19214ca4bf0c}</Project>
+      <Name>DemoShop.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
