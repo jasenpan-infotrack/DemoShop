@@ -1,5 +1,6 @@
 ﻿using DemoShop.Core.Contracts;
 using DemoShop.Core.Models;
+using DemoShop.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,25 @@ namespace DemoShop.WebUI.Controllers
             productsCtx = productContext;
             productCategoriesCtx = productCategoryContext;
         }
-        public ActionResult Index()
+        public ActionResult Index(string Category=null)
         {
-            List<Product> products = productsCtx.Collection().ToList();
-            return View(products);
+            List<Product> products;
+            List<ProductCategory> productCategories = productCategoriesCtx.Collection().ToList();
+
+            if (Category == null)
+            {
+                products = productsCtx.Collection().ToList();
+            }
+            else
+            {
+                products = productsCtx.Collection().Where(p => p.Category == Category).ToList();
+            }
+
+            ProductListViewModel vm = new ProductListViewModel();
+            vm.Products = products;
+            vm.ProductCategories = productCategories;
+
+            return View(vm);
         }
 
         public ActionResult Details(string id)
